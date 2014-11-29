@@ -1,0 +1,35 @@
+base:
+        build: .
+titan:
+        build: ./titan
+        hostname: "titan"
+        links:
+                - base
+                - hbase
+                - elasticsearch
+        ports:
+                - "8182:8182" # http
+                - "8184:8184" # rexpro
+hbase:
+        build: ./hbase
+        hostname: "hbase"
+        links:
+                - base
+        ports:
+                - "2181:2181"   # zookeeper
+                - "60000:60000" # HBase Master API port
+                - "60010:60010" # HBase Master Web UI
+                - "60020:60020" # Regionserver API port
+                - "60030:60030" # HBase Regionserver web UI
+elasticsearch:
+        build: ./elasticsearch
+        hostname: "elasticsearch"
+        links:
+                - base
+        volumes:
+                - elasticsearch/data:/data
+        ports:
+                - "9200:9200"
+                - "9300:9300"
+
+# vim: set ts=8 sw=8 sts=8 ai et :
