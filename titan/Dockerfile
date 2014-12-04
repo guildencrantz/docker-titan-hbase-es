@@ -14,9 +14,6 @@ RUN curl -OL http://s3.thinkaurelius.com/downloads/titan/$TITAN_NAME.zip && \
     unzip $TITAN_NAME -d / && \
     rm $TITAN_NAME.zip
 
-#CMD ["/usr/sbin/sshd", "-D"]
-EXPOSE 22
-
 ADD LOCAL-rexster-hbase-es.xml /$TITAN_NAME/conf/LOCAL-rexster-hbase-es.xml
 
 CMD /$TITAN_NAME/bin/rexster.sh -s -c ../conf/LOCAL-rexster-hbase-es.xml

@@ -1,11 +1,15 @@
 #!/bin/sh
 
-export JAVA_HOME=/usr/java/latest
+source ~/.bashrc
 
-/hbase-0.94.24/bin/start-hbase.sh
+trap $HBASE_HOME/bin/stop-hbase.sh SIGINT SIGTERM
+
+$HBASE_HOME/bin/start-hbase.sh
 
 while (( $(ps auxww | grep "HMaster start" | grep -v grep | wc -l) > 0 )); do
-  sleep 1
+  sleep 5
 done
+
+echo "hbase done"
 
 # vim: set ts=2 sw=2 sts=2 ai et :
