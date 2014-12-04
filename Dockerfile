@@ -1,5 +1,5 @@
 #
-# Base Java7 Centos6 Dockerfile
+# Base Java7 Centos7 Dockerfile
 #
 
 # Pull base image
