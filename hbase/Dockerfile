@@ -8,8 +8,8 @@ FROM titan_base:latest
 ENV HBASE_VERSION 0.94.24
 
 # install hbase master
-RUN curl -OL http://mirror.olnevhost.net/pub/apache/hbase/hbase-$HBASE_VERSION/hbase-$HBASE_VERSION.tar.gz && \
-    tar zvxf hbase-$HBASE_VERSION.tar.gz && \
+RUN curl -L http://archive.apache.org/dist/hbase/hbase-$HBASE_VERSION/hbase-$HBASE_VERSION.tar.gz | \
+    tar zvx --null && \
     echo "export HBASE_HOME=/hbase-$HBASE_VERSION" >> ~/.bashrc
 
 ADD run.sh /hbase-$HBASE_VERSION/bin/LOCAL-run.sh
