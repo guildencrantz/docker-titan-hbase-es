@@ -3,7 +3,6 @@
 #
 
 # Pull base image.
-#FROM centos:centos6
 FROM titan_base:latest
 
 ENV ES_PKG_NAME elasticsearch-1.3.2
@@ -36,16 +35,5 @@ CMD ["/elasticsearch/bin/elasticsearch"]
 #   - 9300: transport
 EXPOSE 9200
 EXPOSE 9300
-
-# Install and set up sshd
-#RUN yum -y install openssh-server
-#RUN \
-#    ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && \
-#    ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key && \
-#    sed -i "s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && \
-#    sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config
-#RUN echo 'root:screencast' | chpasswd
-#CMD ["/usr/sbin/sshd", "-D"]
-#EXPOSE 22
 
 # vim: set ts=4 sw=4 sts=4 ai et :

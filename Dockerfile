@@ -6,15 +6,8 @@
 FROM centos:centos7
 
 # Install standard utils
-RUN yum -y install hostname openssh-server tar unzip which && \
+RUN yum -y install hostname tar unzip which && \
     yum clean all
-
-# Setup openssh (but don't start it)
-RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && \
-    ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key && \
-    sed -i "s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && \
-    sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config && \
-    echo 'root:insecure' | chpasswd
 
 # Install Java7
 RUN curl -OL 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-x64.rpm' \

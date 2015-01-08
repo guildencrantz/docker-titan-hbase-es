@@ -1,8 +1,5 @@
 base:
         build: .
-        command: /usr/sbin/sshd -D
-        expose:
-                - "22"
 titan:
         build: ./titan
         hostname: "titan"
