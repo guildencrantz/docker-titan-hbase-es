@@ -15,6 +15,7 @@ RUN curl -OL http://s3.thinkaurelius.com/downloads/titan/$TITAN_NAME.zip && \
     rm $TITAN_NAME.zip
 
 ADD LOCAL-rexster-hbase-es.xml /$TITAN_NAME/conf/LOCAL-rexster-hbase-es.xml
+ADD LOCAL-gremlin-hbase.conf /$TITAN_NAME/conf/
 
 CMD /$TITAN_NAME/bin/rexster.sh -s -c ../conf/LOCAL-rexster-hbase-es.xml
 
