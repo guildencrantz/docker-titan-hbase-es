@@ -3,7 +3,7 @@
 #
 
 # Pull base image.
-FROM titan_base:latest
+FROM dockertitanhbasees_base:latest
 
 ENV TITAN_VERSION 0.5.2
 ENV HBASE_VERSION 1

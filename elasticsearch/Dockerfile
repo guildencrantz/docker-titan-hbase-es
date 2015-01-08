@@ -3,7 +3,7 @@
 #
 
 # Pull base image.
-FROM titan_base:latest
+FROM dockertitanhbasees_base:latest
 
 ENV ES_PKG_NAME elasticsearch-1.3.2
 
